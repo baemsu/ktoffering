@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <!-- 뷰포트 설정 (반응형 필수) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KT Offering Map</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <!-- 헤더 영역 -->
+  <header class="bg-blue-600 text-white py-4 sm:py-6">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+      <h1 class="text-xl sm:text-2xl font-bold">
+        KT Offering Map
+      </h1>
+    </div>
+  </header>
+
+  <!-- 내비게이션 영역 -->
+  <nav class="bg-white shadow-md">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- 내비게이션 상단(타이틀, 햄버거 버튼) -->
+      <div class="flex items-center justify-between py-4">
+        <div class="text-xl font-bold text-blue-600">
+          메뉴
+        </div>
+        <!-- 작은 화면에서만 보이는 햄버거 버튼 -->
+        <button
+          id="nav-toggle"
+          class="md:hidden text-blue-600 focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          <!-- 햄버거 아이콘 -->
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 실제 메뉴 버튼 그룹(중간 화면 이상에서만 기본 노출) -->
+      <div
+        id="nav-content"
+        class="hidden flex-col md:flex md:flex-row md:items-center md:justify-center pb-4 md:pb-0 space-y-2 md:space-y-0 md:space-x-6"
+      >
+        <button
+          id="menu-product"
+          class="px-4 py-2 text-blue-600 font-semibold border border-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition"
+        >
+          Product
+        </button>
+        <button
+          id="menu-ax-service"
+          class="px-4 py-2 text-blue-600 font-semibold border border-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition"
+        >
+          AX Service
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 메인 콘텐츠 영역 -->
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Product Content -->
+    <div id="product-content" class="content py-6">
+      <h1 class="text-xl font-bold mb-4">Product</h1>
+      <ul class="space-y-2">
+        <li>
+          <span class="tree-node cursor-pointer font-semibold text-blue-600">
+            ▶ KT 상품 Line-up
+          </span>
+          <ul class="hidden pl-6">
+            <!-- (이하 트리 구조 그대로 유지) -->
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ AI/BigData
+              </span>
+              <ul class="hidden pl-6">
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ AI Contact Center
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>A'Cen Cloud</li>
+                    <li>A'Cen On Premise</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ AI Robot
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>AI 배송로봇 (실내)</li>
+                    <li>AI 배송로봇 (실외)</li>
+                    <li>AI 서빙로봇</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ AI Solution
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>AI Solution</li>
+                    <li>기가지니 인사이드</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ AI Space
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>AI 주택형 솔루션(APT, 빌라, 오피스텔 등)</li>
+                    <li>AI 케어</li>
+                    <li>AI 호텔</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ BigData
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>BigData 플랫폼</li>
+                    <li>관광분석솔루션 (TrlP)</li>
+                    <li>상권분석솔루션 (GrlP)</li>
+                    <li>생활인구솔루션 (ALP)</li>
+                    <li>타겟마케팅 (K-Ads)</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ 생성형 AI 믿:음
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>믿:음</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ 보안/안전/환경
+              </span>
+              <ul class="hidden pl-6">
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ CCTV AI 영상분석
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>CCTV AI 영상분석</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ 안전
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>SafeMate방법</li>
+                    <li>SafeMate소방안전</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ 정보보안
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Secure UTM</li>
+                    <li>Secure지능형위협메일차단</li>
+                    <li>클린존</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ 환경
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Air Map</li>
+                    <li>Genie Air</li>
+                    <li>친환경 음식물처리기</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ 비즈솔루션
+              </span>
+              <ul class="hidden pl-6">
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Cloudflex
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Cloudflex</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Paperless
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>공인전자문서센터</li>
+                    <li>사인</li>
+                    <li>신뢰스캔</li>
+                    <li>패스</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ 모빌리티
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>AI교통영상분석솔루션</li>
+                    <li>DTG/법인차량 관제</li>
+                    <li>GIS (지리정보시스템)</li>
+                    <li>자율주행 셔틀</li>
+                    <li>정밀측위</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ 비즈메카EZ
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>비즈메카 EZ</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ 에너지
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>GiGA energy DR</li>
+                    <li>GiGA energy trade</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ 엔지니어링 플랫폼 서비스
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>엔지니어링 플랫폼</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ 주문/결합/제휴
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>비즈성공팩</li>
+                    <li>주소변경사업제휴</li>
+                    <li>하이오더</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="tree-node cursor-pointer font-semibold text-blue-600">
+            ▶ MS 상품 Line-up
+          </span>
+          <ul class="hidden pl-6">
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ Azure
+              </span>
+              <ul class="hidden pl-6">
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Data & AI
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Azure AI</li>
+                    <li>Azure OpenAI Service</li>
+                    <li>Azure SQL</li>
+                    <li>Cloud for Sustainability</li>
+                    <li>Cosmos DB</li>
+                    <li>Databricks</li>
+                    <li>MS Copilot</li>
+                    <li>Oracle database on Azure</li>
+                    <li>PostgreSQL</li>
+                    <li>Purview</li>
+                    <li>Synapse Analytics</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Digital & App Innovation
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Azure API Management(APIM)</li>
+                    <li>Azure App Service</li>
+                    <li>Azure Container Apps</li>
+                    <li>Azure Kubernetes Service</li>
+                    <li>Azure Logic Apps</li>
+                    <li>Github</li>
+                    <li>Github Copilot</li>
+                    <li>Visual Studio</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ IaaS
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Compute</li>
+                    <li>Networking</li>
+                    <li>Storage</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ PaaS
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>AI+ML</li>
+                    <li>Analytics</li>
+                    <li>Compute</li>
+                    <li>DB</li>
+                    <li>Development</li>
+                    <li>Migration</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ SaaS
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Azure Advisor</li>
+                    <li>DevOps</li>
+                    <li>Fabric</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Infra
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Azure Arc</li>
+                    <li>Azure HPC</li>
+                    <li>Azure Virtual Desktop</li>
+                    <li>Azure Vmware Solution</li>
+                    <li>Linux on Azure</li>
+                    <li>SAP on Azure</li>
+                    <li>SQL server on Azure</li>
+                    <li>Windows server on Azure</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ Business Applications
+              </span>
+              <ul class="hidden pl-6">
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Dynamic 365
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Dynamic 365 Sales</li>
+                    <li>Dynamic Customer Insights</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Power Platform
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Copilot Studio</li>
+                    <li>Power Apps</li>
+                    <li>Power Automate</li>
+                    <li>Power BI</li>
+                    <li>Power Pages</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ Modern Work
+              </span>
+              <ul class="hidden pl-6">
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ M365
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Excel</li>
+                    <li>Exchange</li>
+                    <li>M365 Copilot</li>
+                    <li>OneDrive</li>
+                    <li>Powerpoint Outlook</li>
+                    <li>SharePoint</li>
+                    <li>Teams</li>
+                    <li>Word</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Teams
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>App&Workflow Automation</li>
+                    <li>eCDN</li>
+                    <li>Teams Phone</li>
+                    <li>Teams Premium</li>
+                    <li>Teams Room</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Viva
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Amplify</li>
+                    <li>Engage</li>
+                    <li>Goals</li>
+                    <li>Insights</li>
+                    <li>Learning</li>
+                    <li>Pulse</li>
+                    <li>Viva connection</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Windows365
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Windows365 Business/Enterprise/Frontline</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ Security
+              </span>
+              <ul class="hidden pl-6">
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ App
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Security Copilot</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Defender
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Cloud Defender / Defender XDR</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Entra
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Entra Domain Service</li>
+                    <li>Entra ID Governance</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Intune
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Intune 고급분석/원격지원</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Priva
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Priva 개인정보 위험관리/권한관리</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Purview
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Purview 내부위험관리/정보보호/수명주기 관리</li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                    ▶ Sentinel
+                  </span>
+                  <ul class="hidden pl-6">
+                    <li>Sentinel SecOps</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- AX Service Content -->
+    <div id="ax-service-content" class="content hidden py-6">
+      <h1 class="text-xl font-bold mb-4">AX Service</h1>
+      <ul class="space-y-2">
+        <li>
+          <span class="tree-node cursor-pointer font-semibold text-blue-600">
+            ▶ AI
+          </span>
+          <ul class="hidden pl-6">
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ AI 컨설팅 서비스
+              </span>
+              <ul class="hidden pl-6">
+                <li>AI SaaS</li>
+                <li>AI PaaS</li>
+                <li>AI IaaS</li>
+              </ul>
+            </li>
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ AI PoC
+              </span>
+              <ul class="hidden pl-6">
+                <li>AI 서비스 PoC</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="tree-node cursor-pointer font-semibold text-blue-600">
+            ▶ Cloud
+          </span>
+          <ul class="hidden pl-6">
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ Cloud 컨설팅 서비스
+              </span>
+              <ul class="hidden pl-6">
+                <li>소버린 클라우드 컨설팅</li>
+              </ul>
+            </li>
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ AX 컨설팅 서비스
+              </span>
+              <ul class="hidden pl-6">
+                <li>AX 추진전략 수립 컨설팅</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="tree-node cursor-pointer font-semibold text-blue-600">
+            ▶ IT
+          </span>
+          <ul class="hidden pl-6">
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ Modern IT 컨설팅 서비스
+              </span>
+              <ul class="hidden pl-6">
+                <li>Application Modernization 컨설팅</li>
+                <li>Data Modernization 컨설팅</li>
+                <li>Industrial AX 컨설팅</li>
+                <li>Modern Work 컨설팅</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="tree-node cursor-pointer font-semibold text-blue-600">
+            ▶ Hybrid Cloud
+          </span>
+          <ul class="hidden pl-6">
+            <li>
+              <span class="tree-node cursor-pointer font-semibold text-blue-600">
+                ▶ 컨설팅 서비스
+              </span>
+              <ul class="hidden pl-6">
+                <li>Hybrid/G-Cloud/On Prime 컨설팅</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 스크립트 영역 -->
+  <script>
+    // 트리 구조(▶ 클릭 시 펼침/접힘)
+    document.querySelectorAll('.tree-node').forEach(node => {
+      node.addEventListener('click', function () {
+        const siblingList = this.nextElementSibling;
+        if (siblingList) {
+          siblingList.classList.toggle('hidden');
+        }
+      });
+    });
+
+    // 작은 화면에서 햄버거 버튼 클릭 시 메뉴 펼치기/접기
+    const navToggle = document.getElementById('nav-toggle');
+    const navContent = document.getElementById('nav-content');
+
+    navToggle.addEventListener('click', () => {
+      // hidden 클래스를 toggle하여 펼침/접음을 제어
+      navContent.classList.toggle('hidden');
+    });
+
+    // Product / AX Service 토글
+    document.getElementById('menu-product').addEventListener('click', function () {
+      document.getElementById('product-content').classList.remove('hidden');
+      document.getElementById('ax-service-content').classList.add('hidden');
+    });
+
+    document.getElementById('menu-ax-service').addEventListener('click', function () {
+      document.getElementById('product-content').classList.add('hidden');
+      document.getElementById('ax-service-content').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
